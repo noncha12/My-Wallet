@@ -4,13 +4,15 @@ body {
   font-family: 'Itim', sans-serif;
   background-color: #fffafc;
   margin: 0;
-  padding: 2rem;
+  padding: 1.5rem;
   color: #444;
 }
 
 .container {
   max-width: 900px;
-  margin: auto;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -22,31 +24,28 @@ h1 {
 
 form {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   gap: 1rem;
-  justify-content: center;
   margin-bottom: 2rem;
 }
 
 input, select, button {
+  width: 100%;
+  max-width: 100%;
   padding: 0.8rem;
   font-size: 1rem;
   border-radius: 12px;
   border: 1px solid #ccc;
-  
+  box-sizing: border-box;
 }
 
 select {
-    font-size: 1rem;
-    padding: 0.8rem;
-    border-radius: 12px;
-    border: 1px solid #ccc;
-    background-color: #fffdfd;
-    appearance: none; /* เอา style เดิมออก */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-  }
-  
+  background-color: #fffdfd;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
 
 button {
   background-color: #ffa8c5;
@@ -66,11 +65,11 @@ button:hover {
   flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 2rem;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .summary {
-  flex: 1 1 200px;
+  flex: 1 1 220px;
   background: #fff;
   border-radius: 15px;
   padding: 1rem;
@@ -125,12 +124,15 @@ table {
   width: 100%;
   border-collapse: collapse;
   background: #fffdfd;
+  display: block;
+  overflow-x: auto;
 }
 
 th, td {
   padding: 0.75rem;
   text-align: center;
   border: 1px solid #f0d1e2;
+  white-space: nowrap;
 }
 
 tbody tr:nth-child(even) {
@@ -145,71 +147,60 @@ tbody tr:nth-child(even) {
   color: #ff69b4;
 }
 
-@media (max-width: 768px) {
-  .summary-boxes {
-    flex-direction: column;
-  }
-
-  form {
-    flex-direction: column;
-  }
+/* Custom dropdown */
+.custom-select-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
 }
 
+.custom-select {
+  background: #fffdfd;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  position: relative;
+  font-size: 1.1rem;
+  font-family: 'Itim', sans-serif;
+  user-select: none;
+}
 
-.custom-select-wrapper {
-    position: relative;
-    width: 200px;
-  }
-  
-  .custom-select {
-    background: #fffdfd;
-    border: 2px solid #ccc;
-    border-radius: 12px;
-    padding: 0.8rem 1rem;
-    cursor: pointer;
-    position: relative;
-    font-size: 1.1rem;
-    font-family: 'Itim', sans-serif;
-    user-select: none;
-  }
-  
-  .custom-select::after {
-    content: '▾';
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .select-options {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 12px;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    z-index: 10;
-    display: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  }
-  
-  .select-options li {
-    padding: 0.8rem 1rem;
-    font-size: 1.1rem;
-    cursor: pointer;
-  }
-  
-  .select-options li:hover {
-    background-color: #ffe6f0;
-  }
-  
+.custom-select::after {
+  content: '▾';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
+.select-options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  display: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 
-  /* ลบปุ่มเพิ่ม/ลด ของ input type="number" */
+.select-options li {
+  padding: 0.8rem 1rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.select-options li:hover {
+  background-color: #ffe6f0;
+}
+
+/* ลบปุ่มเพิ่ม/ลด ของ input type="number" */
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -217,7 +208,28 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 input[type=number] {
-    appearance: textfield;
-    -moz-appearance: textfield; /* Firefox */
+  appearance: textfield;
+  -moz-appearance: textfield; /* Firefox */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .summary-boxes {
+    flex-direction: column;
+    align-items: center;
   }
-  
+
+  form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  th, td {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  .report-section {
+    padding: 1rem 0.5rem;
+  }
+}
