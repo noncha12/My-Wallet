@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+body {
+  font-family: 'Itim', sans-serif;
+  background-color: #fffafc;
+  margin: 0;
+  padding: 2rem;
+  color: #444;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  color: #ff69b4;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+input, select, button {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  
+}
+
+select {
+    font-size: 1rem;
+    padding: 0.8rem;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    background-color: #fffdfd;
+    appearance: none; /* เอา style เดิมออก */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  
+
+button {
+  background-color: #ffa8c5;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+  border: none;
+}
+
+button:hover {
+  background-color: #ff69b4;
+}
+
+.summary-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: space-between;
+}
+
+.summary {
+  flex: 1 1 200px;
+  background: #fff;
+  border-radius: 15px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(255, 105, 180, 0.1);
+}
+
+.summary h2 {
+  margin: 0 0 0.5rem;
+}
+
+#reset-btn {
+  width: 100%;
+  background-color: #ff6f91;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.report-section {
+  background: white;
+  padding: 1rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.daily-header {
+  background: #87cefa;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 12px 12px 0 0;
+  margin: -1rem -1rem 1rem -1rem;
+}
+
+.monthly-header {
+  background: #7dd87d;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 12px 12px 0 0;
+  margin: -1rem -1rem 1rem -1rem;
+}
+
+.all-header {
+  background: #888;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 12px 12px 0 0;
+  margin: -1rem -1rem 1rem -1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fffdfd;
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: center;
+  border: 1px solid #f0d1e2;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #fef3f7;
+}
+
+.edit-btn, .save-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #ff69b4;
+}
+
+@media (max-width: 768px) {
+  .summary-boxes {
+    flex-direction: column;
+  }
+
+  form {
+    flex-direction: column;
+  }
+}
+
+
+.custom-select-wrapper {
+    position: relative;
+    width: 200px;
+  }
+  
+  .custom-select {
+    background: #fffdfd;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    position: relative;
+    font-size: 1.1rem;
+    font-family: 'Itim', sans-serif;
+    user-select: none;
+  }
+  
+  .custom-select::after {
+    content: '▾';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .select-options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  
+  .select-options li {
+    padding: 0.8rem 1rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+  
+  .select-options li:hover {
+    background-color: #ffe6f0;
+  }
+  
+
+
+  /* ลบปุ่มเพิ่ม/ลด ของ input type="number" */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    appearance: textfield;
+    -moz-appearance: textfield; /* Firefox */
+  }
+  
