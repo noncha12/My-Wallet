@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🍓 บัญชีรายรับ - รายจ่าย</title>
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#ff69b4" />
+    <link rel="icon" href="icon-256.png" />
+
+    <!-- CSS และฟอนต์ -->
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Mali&family=Prompt&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- หัวเรื่อง -->
+        <h1>📒 บัญชีรายรับ - รายจ่าย</h1>
+
+        <!-- ครอบด้วย div -->
+        <div class="theme-toggle-wrapper">
+            <button id="toggle-theme">🌗 เปลี่ยนโหมด</button>
+        </div>
+
+
+        <!-- ฟอร์มกรอกข้อมูลรายการ -->
+        <form id="transaction-form">
+            <input type="date" id="date" required />
+            <input type="time" id="time" required />
+            <input type="text" id="category" placeholder="🍭 หมวดหมู่" required />
+            <input type="number" id="amount" placeholder="💸 จำนวนเงิน" required />
+
+            <!-- Dropdown ประเภท -->
+            <div class="custom-select-wrapper">
+                <div class="custom-select" id="custom-select">
+                    <span id="selected-option">💰 รายรับ</span>
+                    <ul class="select-options">
+                        <li data-value="income">💰 รายรับ</li>
+                        <li data-value="expense">🛍️ รายจ่าย</li>
+                    </ul>
+                </div>
+                <input type="hidden" id="type" value="income" />
+            </div>
+
+            <input type="text" id="note" placeholder="📝 รายละเอียดเพิ่มเติม" />
+            <button type="submit">✨ เพิ่มรายการ</button>
+        </form>
+
+        <!-- สรุปยอด -->
+        <div class="summary-boxes">
+
+            <!-- รายรับวันนี้ (ใช้รูปแทน) -->
+            <div class="summary">
+                <h2>💸💰💸</h2>
+                <h2>รายรับวันนี้</h2>
+                <p><span id="total-income">0</span> บาท</p>
+            </div>
+
+            <!-- รายจ่ายวันนี้ (ใช้รูปแทน) -->
+            <div class="summary">
+                <h2><img src="expense.png" /></h2>
+                <h2>รายจ่ายวันนี้</h2>
+                <p><span id="total-expense">0</span> บาท</p>
+            </div>
+
+            <!-- คงเหลือวันนี้ (คงไว้เป็นอิโมจิหรือไอคอนเดิม) -->
+            <div class="summary">
+                <h2>📄</h2>
+                <h2>คงเหลือวันนี้</h2>
+                <p><span id="total-balance">0</span> บาท</p>
+            </div>
+
+            <!-- คงเหลือในบัญชี (ใช้รูปแทน) -->
+            <div class="summary">
+                <h2><img src="balance.png" /></h2>
+                <h2>คงเหลือในบัญชี</h2>
+                <p><span id="account-balance">0</span> บาท</p>
+            </div>
+
+        </div>
+
+
+        <!-- ตารางรวมรายวัน -->
+        <div class="report-section">
+            <h2 class="combined-header blue">📅 รายรับรายวัน และ รายจ่ายรายวัน</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>วันที่</th>
+                        <th>รายรับ (บาท)</th>
+                        <th>รายจ่าย (บาท)</th>
+                    </tr>
+                </thead>
+                <tbody id="combined-daily-body"></tbody>
+            </table>
+        </div>
+
+        <!-- ตารางรวมรายเดือน -->
+        <div class="report-section">
+            <h2 class="combined-header green">📆 รายรับรายเดือน และ รายจ่ายรายเดือน</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>เดือน</th>
+                        <th>รายรับ (บาท)</th>
+                        <th>รายจ่าย (บาท)</th>
+                    </tr>
+                </thead>
+                <tbody id="combined-monthly-body"></tbody>
+            </table>
+        </div>
+
+        <!-- รายการทั้งหมด -->
+        <div class="report-section">
+            <h2 class="all-header">📋 รายการทั้งหมด</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>วันที่</th>
+                        <th>เวลา</th>
+                        <th>หมวดหมู่</th>
+                        <th>จำนวนเงิน</th>
+                        <th>ประเภท</th>
+                        <th>หมายเหตุ</th>
+                        <th>แก้ไข</th>
+                        <th>ลบ</th>
+                    </tr>
+                </thead>
+
+                <tbody id="all-transactions-body"></tbody>
+            </table>
+        </div>
+
+        <!-- ปุ่มรีเซ็ต -->
+        <button id="reset-btn">🗑️ รีเซ็ตบัญชีทั้งหมด</button>
+    </div>
+
+    <!-- สคริปต์ -->
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js');
+        }
+    </script>
+</body>
+
+</html>
