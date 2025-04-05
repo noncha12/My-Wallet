@@ -1,0 +1,397 @@
+/* โหลดฟอนต์ Itim จาก Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+/* === ตั้งค่าพื้นฐาน === */
+body {
+    font-family: 'Mali', 'Prompt', sans-serif;
+    background-color: #fffafc;
+    margin: 0;
+    padding: 2rem;
+    color: #444;
+  }
+  
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* หัวเรื่อง */
+h1 {
+  text-align: center;
+  color: #ff69b4;
+  margin-bottom: 2rem;
+}
+
+/* === ฟอร์มรายการ === */
+form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+input, button {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+}
+
+/* ปุ่มเพิ่มรายการ */
+button[type="submit"] {
+  background-color: #ff6196;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #ff99cc;
+}
+
+/* Custom dropdown */
+.custom-select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.custom-select {
+  background: #fffdfd;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: 'Itim', sans-serif;
+  user-select: none;
+  position: relative;
+}
+
+.custom-select::after {
+  content: '▾';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.select-options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  display: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.select-options li {
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+}
+
+.select-options li:hover {
+  background-color: #ffe6f0;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+/* === กล่องสรุปรายการรายวัน/รายเดือน === */
+.report-section {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.combined-header {
+  color: black;
+  padding: 0.8rem 1rem;
+  border-radius: 12px 12px 0 0;
+  margin: -1rem -1rem 1rem -1rem;
+  font-weight: bold;
+}
+
+.combined-header.blue { background: #87cefa; }
+.combined-header.green { background: #7dd87d; }
+
+/* === กล่อง "รายการทั้งหมด" แบบแยก === */
+.all-transactions-section {
+  background: #fafafa;
+  border: 1.5px solid #ccc;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: none;
+  margin-top: 3rem;
+}
+
+.all-header {
+  background: #888;
+  color: white;
+  padding: 0.8rem 1rem;
+  border-radius: 12px 12px 0 0;
+  margin: -1rem -1rem 1rem -1rem;
+  font-weight: bold;
+}
+
+/* === ตารางทั้งหมด === */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fffdfd;
+  table-layout: fixed;
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: center;
+  border: 1px solid #f0d1e2;
+  vertical-align: middle;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #fef3f7;
+}
+
+/* ความกว้างของแต่ละคอลัมน์ (เฉพาะรายการทั้งหมด) */
+th:nth-child(1), td:nth-child(1) { width: 100px; }  /* วันที่ */
+th:nth-child(2), td:nth-child(2) { width: 80px; }   /* เวลา */
+th:nth-child(3), td:nth-child(3) { width: 160px; }  /* หมวดหมู่ */
+th:nth-child(4), td:nth-child(4) { width: 120px; }  /* จำนวนเงิน */
+th:nth-child(5), td:nth-child(5) { width: 100px; }  /* ประเภท */
+th:nth-child(6), td:nth-child(6) { width: 200px; }  /* หมายเหตุ */
+th:nth-child(7), td:nth-child(7),
+th:nth-child(8), td:nth-child(8) {
+  width: 60px; /* แก้ไข / ลบ */
+}
+
+/* === ปุ่มแก้ไข / ลบ === */
+.edit-btn, .delete-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.edit-btn {
+  color: #ff69b4;
+}
+
+.delete-btn {
+  color: crimson;
+  padding: 0;
+  line-height: 1;
+  display: inline;
+}
+
+/* ปุ่มรีเซ็ต */
+#reset-btn {
+  width: 100%;
+  background-color: #ff053f;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  padding: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 2rem;
+}
+
+#reset-btn:hover {
+  background-color: #ff678a;
+}
+
+/* === Responsive สำหรับมือถือ === */
+@media (max-width: 768px) {
+  .summary-boxes, form {
+    flex-direction: column;
+    display: flex;
+  }
+
+  form {
+    grid-template-columns: 1fr !important;
+  }
+
+  .custom-select-wrapper {
+    width: 100%;
+  }
+}
+
+
+/* กล่องสรุปรายวัน */
+.summary-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* กล่องย่อยแต่ละอัน */
+  .summary {
+    flex: 1 1 200px;               /* ยืดหยุ่น กว้างขั้นต่ำ 200px */
+    background: #fff;
+    border-radius: 15px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(255, 105, 180, 0.1); /* เงาสีชมพูอ่อน */
+  }
+  
+  /* หัวในกล่องสรุป */
+  .summary h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  
+  @media (max-width: 768px) {
+    .summary-boxes {
+      flex-direction: column;
+    }
+  }
+  
+
+  /* === DARK MODE THEME === */
+body.dark-mode {
+    background-color: #1e1e2f;
+    color: #e0e0e0;
+  }
+  
+  .dark-mode h1 {
+    color: #ffaad4;
+  }
+  
+  .dark-mode .report-section,
+  .dark-mode .all-transactions-section {
+    background-color: #2b2b3d;
+    border: 1px solid #444;
+    box-shadow: none;
+  }
+  
+  .dark-mode .combined-header.blue {
+    background-color: #4e6eff;
+    color: #fff;
+  }
+  
+  .dark-mode .combined-header.green {
+    background-color: #48c774;
+    color: #fff;
+  }
+  
+  .dark-mode .all-header {
+    background-color: #555;
+    color: #fff;
+  }
+  
+  .dark-mode input,
+  .dark-mode select,
+  .dark-mode .custom-select,
+  .dark-mode textarea {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #666;
+  }
+  
+  .dark-mode .select-options {
+    background: #444;
+    border: 1px solid #666;
+  }
+  
+  .dark-mode .select-options li:hover {
+    background-color: #666;
+  }
+  
+  .dark-mode .summary {
+    background-color: #2f2f45;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
+  }
+  
+  .dark-mode table {
+    background-color: #2a2a3a;
+    color: #e0e0e0;
+  }
+  
+  .dark-mode th,
+  .dark-mode td {
+    border: 1px solid #555;
+  }
+  
+  .dark-mode tbody tr:nth-child(even) {
+    background-color: #333347;
+  }
+  
+  .dark-mode button[type="submit"],
+  .dark-mode #reset-btn {
+    background-color: #ff69b4;
+    color: white;
+  }
+  
+  .dark-mode button[type="submit"]:hover,
+  .dark-mode #reset-btn:hover {
+    background-color: #ff3e8b;
+  }
+  
+  .dark-mode .edit-btn {
+    color: #ffc0cb;
+  }
+  
+  .dark-mode .delete-btn {
+    color: #ff7a7a;
+  }
+  
+  .dark-mode #toggle-theme {
+    background: #444;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+  
+
+  .theme-toggle-wrapper {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  #toggle-theme {
+    background: #eee;
+    color: #333;
+    font-family: 'Itim', sans-serif;
+    border: none;
+    border-radius: 12px;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: background 0.3s;
+  }
+  
+  #toggle-theme:hover {
+    background: #ccc;
+  }
+  
